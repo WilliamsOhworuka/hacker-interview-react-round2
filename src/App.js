@@ -15,12 +15,28 @@ const App = () => {
   const handle = (e) => handleKeyDown(e, setState, stateRef.current);
 
   useEffect(() => {
+    let width;
+    let height;
+    let error;
+
+    while (!Number(width)) {
+      if (error) alert('width must be a number');
+      width = prompt('Enter the width');
+      error = !Number(width) ? true : false
+    }
+
+    while (!Number(height)) {
+      if (error) alert('height must be a number');
+      height = prompt('Enter the height');
+      error = !Number(height) ? true : false
+    }
+
     window.addEventListener("keyup", handle);
 
-    const height = prompt('Enter the height') || 10;
-    const width = prompt('Enter the width') || 10;
+    height = Math.ceil(+height);
+    width = Math.ceil(+width)
 
-    const [board, [y, x]] = setup(+height, +width);
+    const [board, [y, x]] = setup(height, width);
 
     setState({
       steps: 0,
