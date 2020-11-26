@@ -36,8 +36,8 @@ const App = () => {
   return (
     state && (
       <div className="App">
-        {state.board.map((row) => (
-          <Row row={row} />
+        {state.board.map((row, index) => (
+          <Row key={`row-${index}`} row={row} />
         ))}
       </div>
     )

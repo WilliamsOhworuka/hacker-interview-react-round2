@@ -31,8 +31,8 @@ const Cell = ({ val }) => <div style={styles.cell}>
 const Row = ({ row }) => {
   return (
     <div style={styles.row}>
-      {row.map((item) => (
-        <Cell val={item} />
+      {row.map((item, index) => (
+        <Cell key={`cell-${index}`} val={item} />
       ))}
     </div>
   );
